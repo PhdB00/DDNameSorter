@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <RootNamespace>DD.NameSorter</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>name-sorter</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Update="Resources\unsorted-names-list.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0-preview.2.25163.2" />
+      <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    </ItemGroup>
+
+</Project>

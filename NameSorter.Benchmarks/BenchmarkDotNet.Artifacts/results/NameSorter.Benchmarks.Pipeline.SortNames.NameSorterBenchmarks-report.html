@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>NameSorter.Benchmarks.Pipeline.SortNames.NameSorterBenchmarks-20250330-155439</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.5039/23H2/2023Update/SunValley3)
+13th Gen Intel Core i7-1365U, 1 CPU, 12 logical and 10 physical cores
+.NET SDK 9.0.101
+  [Host]     : .NET 9.0.0 (9.0.24.52809), X64 RyuJIT AVX2
+  DefaultJob : .NET 9.0.0 (9.0.24.52809), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method           </th><th>Categories</th><th>NameCount</th><th>Mean </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min  </th><th>Q1   </th><th>Median</th><th>Q3   </th><th>Max  </th><th>Op/s</th><th>Ratio</th><th>RatioSD</th><th>Gen0</th><th>Gen1</th><th>Allocated</th><th>Alloc Ratio</th>
+</tr>
+</thead><tbody><tr><td>SortMixedNames</td><td>Mixed</td><td>100</td><td>32.28 &mu;s</td><td>0.396 &mu;s</td><td>0.370 &mu;s</td><td>0.096 &mu;s</td><td>31.64 &mu;s</td><td>32.07 &mu;s</td><td>32.31 &mu;s</td><td>32.53 &mu;s</td><td>33.07 &mu;s</td><td>30,981.3</td><td>1.85</td><td>0.03</td><td>1.5259</td><td>-</td><td>9.71 KB</td><td>2.39</td>
+</tr><tr><td>SortOrderedNames</td><td>Ordered</td><td>100</td><td>17.47 &mu;s</td><td>0.238 &mu;s</td><td>0.234 &mu;s</td><td>0.059 &mu;s</td><td>17.11 &mu;s</td><td>17.31 &mu;s</td><td>17.46 &mu;s</td><td>17.57 &mu;s</td><td>18.00 &mu;s</td><td>57,251.1</td><td>1.00</td><td>0.02</td><td>0.6409</td><td>-</td><td>4.07 KB</td><td>1.00</td>
+</tr><tr><td>SortRandomNames</td><td>Random</td><td>100</td><td>33.37 &mu;s</td><td>0.346 &mu;s</td><td>0.323 &mu;s</td><td>0.083 &mu;s</td><td>32.97 &mu;s</td><td>33.11 &mu;s</td><td>33.26 &mu;s</td><td>33.61 &mu;s</td><td>33.94 &mu;s</td><td>29,963.4</td><td>1.91</td><td>0.03</td><td>2.0142</td><td>0.0610</td><td>12.66 KB</td><td>3.11</td>
+</tr><tr><td>SortReverseOrderedNames</td><td>Reverse</td><td>100</td><td>24.41 &mu;s</td><td>0.228 &mu;s</td><td>0.213 &mu;s</td><td>0.055 &mu;s</td><td>24.03 &mu;s</td><td>24.30 &mu;s</td><td>24.43 &mu;s</td><td>24.55 &mu;s</td><td>24.80 &mu;s</td><td>40,969.1</td><td>1.40</td><td>0.02</td><td>0.6409</td><td>-</td><td>4.07 KB</td><td>1.00</td>
+</tr><tr><td>SortSameLastNames</td><td>SameLastName</td><td>100</td><td>35.91 &mu;s</td><td>0.331 &mu;s</td><td>0.310 &mu;s</td><td>0.080 &mu;s</td><td>35.43 &mu;s</td><td>35.69 &mu;s</td><td>35.86 &mu;s</td><td>36.08 &mu;s</td><td>36.44 &mu;s</td><td>27,848.9</td><td>2.06</td><td>0.03</td><td>2.0142</td><td>0.0610</td><td>12.66 KB</td><td>3.11</td>
+</tr><tr><td>SortMixedNames</td><td>Mixed</td><td>1000</td><td>519.06 &mu;s</td><td>4.408 &mu;s</td><td>4.123 &mu;s</td><td>1.065 &mu;s</td><td>513.15 &mu;s</td><td>514.77 &mu;s</td><td>519.43 &mu;s</td><td>522.37 &mu;s</td><td>525.70 &mu;s</td><td>1,926.6</td><td>1.83</td><td>0.02</td><td>14.6484</td><td>1.9531</td><td>92.91 KB</td><td>2.60</td>
+</tr><tr><td>SortOrderedNames</td><td>Ordered</td><td>1000</td><td>284.13 &mu;s</td><td>2.797 &mu;s</td><td>2.617 &mu;s</td><td>0.676 &mu;s</td><td>280.25 &mu;s</td><td>281.87 &mu;s</td><td>284.03 &mu;s</td><td>285.74 &mu;s</td><td>288.63 &mu;s</td><td>3,519.5</td><td>1.00</td><td>0.01</td><td>5.3711</td><td>-</td><td>35.71 KB</td><td>1.00</td>
+</tr><tr><td>SortRandomNames</td><td>Random</td><td>1000</td><td>562.72 &mu;s</td><td>11.077 &mu;s</td><td>12.756 &mu;s</td><td>2.852 &mu;s</td><td>547.48 &mu;s</td><td>553.51 &mu;s</td><td>558.87 &mu;s</td><td>567.57 &mu;s</td><td>591.43 &mu;s</td><td>1,777.1</td><td>1.98</td><td>0.05</td><td>19.5313</td><td>3.9063</td><td>121.65 KB</td><td>3.41</td>
+</tr><tr><td>SortReverseOrderedNames</td><td>Reverse</td><td>1000</td><td>451.54 &mu;s</td><td>7.972 &mu;s</td><td>6.657 &mu;s</td><td>1.846 &mu;s</td><td>438.35 &mu;s</td><td>447.09 &mu;s</td><td>451.34 &mu;s</td><td>454.94 &mu;s</td><td>462.42 &mu;s</td><td>2,214.6</td><td>1.59</td><td>0.03</td><td>5.3711</td><td>-</td><td>35.71 KB</td><td>1.00</td>
+</tr><tr><td>SortSameLastNames</td><td>SameLastName</td><td>1000</td><td>579.09 &mu;s</td><td>11.555 &mu;s</td><td>13.756 &mu;s</td><td>3.002 &mu;s</td><td>559.08 &mu;s</td><td>568.21 &mu;s</td><td>580.85 &mu;s</td><td>586.88 &mu;s</td><td>611.71 &mu;s</td><td>1,726.9</td><td>2.04</td><td>0.05</td><td>19.5313</td><td>3.9063</td><td>121.65 KB</td><td>3.41</td>
+</tr><tr><td>SortMixedNames</td><td>Mixed</td><td>10000</td><td>7,596.33 &mu;s</td><td>71.406 &mu;s</td><td>59.627 &mu;s</td><td>16.538 &mu;s</td><td>7,493.04 &mu;s</td><td>7,563.77 &mu;s</td><td>7,595.49 &mu;s</td><td>7,639.95 &mu;s</td><td>7,692.80 &mu;s</td><td>131.6</td><td>1.74</td><td>0.02</td><td>140.6250</td><td>62.5000</td><td>924.95 KB</td><td>2.63</td>
+</tr><tr><td>SortOrderedNames</td><td>Ordered</td><td>10000</td><td>4,362.88 &mu;s</td><td>50.541 &mu;s</td><td>47.276 &mu;s</td><td>12.207 &mu;s</td><td>4,287.01 &mu;s</td><td>4,338.39 &mu;s</td><td>4,367.70 &mu;s</td><td>4,401.02 &mu;s</td><td>4,442.59 &mu;s</td><td>229.2</td><td>1.00</td><td>0.01</td><td>54.6875</td><td>23.4375</td><td>352.12 KB</td><td>1.00</td>
+</tr><tr><td>SortRandomNames</td><td>Random</td><td>10000</td><td>7,927.68 &mu;s</td><td>87.067 &mu;s</td><td>81.443 &mu;s</td><td>21.028 &mu;s</td><td>7,812.47 &mu;s</td><td>7,882.63 &mu;s</td><td>7,919.82 &mu;s</td><td>7,979.48 &mu;s</td><td>8,115.74 &mu;s</td><td>126.1</td><td>1.82</td><td>0.03</td><td>187.5000</td><td>125.0000</td><td>1211.5 KB</td><td>3.44</td>
+</tr><tr><td>SortReverseOrderedNames</td><td>Reverse</td><td>10000</td><td>6,993.23 &mu;s</td><td>45.793 &mu;s</td><td>42.835 &mu;s</td><td>11.060 &mu;s</td><td>6,909.18 &mu;s</td><td>6,968.23 &mu;s</td><td>7,003.13 &mu;s</td><td>7,020.24 &mu;s</td><td>7,068.21 &mu;s</td><td>143.0</td><td>1.60</td><td>0.02</td><td>54.6875</td><td>23.4375</td><td>352.12 KB</td><td>1.00</td>
+</tr><tr><td>SortSameLastNames</td><td>SameLastName</td><td>10000</td><td>7,741.19 &mu;s</td><td>71.078 &mu;s</td><td>66.486 &mu;s</td><td>17.167 &mu;s</td><td>7,631.06 &mu;s</td><td>7,690.31 &mu;s</td><td>7,739.09 &mu;s</td><td>7,781.57 &mu;s</td><td>7,885.44 &mu;s</td><td>129.2</td><td>1.77</td><td>0.02</td><td>187.5000</td><td>125.0000</td><td>1211.5 KB</td><td>3.44</td>
+</tr></tbody></table>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>NameSorter.Benchmarks.Pipeline.ReadNames.NameParserBenchmarks-20250330-154856</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.5039/23H2/2023Update/SunValley3)
+13th Gen Intel Core i7-1365U, 1 CPU, 12 logical and 10 physical cores
+.NET SDK 9.0.101
+  [Host]     : .NET 9.0.0 (9.0.24.52809), X64 RyuJIT AVX2
+  DefaultJob : .NET 9.0.0 (9.0.24.52809), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method       </th><th>Categories</th><th>NameCount</th><th>Mean </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min  </th><th>Q1   </th><th>Median</th><th>Q3   </th><th>Max  </th><th>Op/s</th><th>Ratio</th><th>RatioSD</th><th>Gen0</th><th>Allocated</th><th>Alloc Ratio</th>
+</tr>
+</thead><tbody><tr><td>ParseEdgeCases</td><td>EdgeCases</td><td>100</td><td>27.13 &mu;s</td><td>0.373 &mu;s</td><td>0.331 &mu;s</td><td>0.088 &mu;s</td><td>26.67 &mu;s</td><td>26.91 &mu;s</td><td>27.03 &mu;s</td><td>27.43 &mu;s</td><td>27.64 &mu;s</td><td>36,853.3</td><td>2.14</td><td>0.03</td><td>13.3667</td><td>82.03 KB</td><td>2.78</td>
+</tr><tr><td>ParseFourPartNames</td><td>FourParts</td><td>100</td><td>14.86 &mu;s</td><td>0.077 &mu;s</td><td>0.068 &mu;s</td><td>0.018 &mu;s</td><td>14.71 &mu;s</td><td>14.83 &mu;s</td><td>14.87 &mu;s</td><td>14.90 &mu;s</td><td>14.96 &mu;s</td><td>67,275.0</td><td>1.17</td><td>0.01</td><td>6.9122</td><td>42.43 KB</td><td>1.44</td>
+</tr><tr><td>ParseMixedNames</td><td>Mixed</td><td>100</td><td>42.90 &mu;s</td><td>0.388 &mu;s</td><td>0.363 &mu;s</td><td>0.094 &mu;s</td><td>42.28 &mu;s</td><td>42.57 &mu;s</td><td>43.07 &mu;s</td><td>43.21 &mu;s</td><td>43.29 &mu;s</td><td>23,309.7</td><td>3.38</td><td>0.03</td><td>17.5781</td><td>107.98 KB</td><td>3.66</td>
+</tr><tr><td>ParseThreePartNames</td><td>ThreeParts</td><td>100</td><td>13.93 &mu;s</td><td>0.160 &mu;s</td><td>0.149 &mu;s</td><td>0.039 &mu;s</td><td>13.68 &mu;s</td><td>13.81 &mu;s</td><td>13.94 &mu;s</td><td>13.99 &mu;s</td><td>14.19 &mu;s</td><td>71,791.1</td><td>1.10</td><td>0.01</td><td>5.8746</td><td>36.05 KB</td><td>1.22</td>
+</tr><tr><td>ParseTwoPartNames</td><td>TwoParts</td><td>100</td><td>12.69 &mu;s</td><td>0.081 &mu;s</td><td>0.076 &mu;s</td><td>0.020 &mu;s</td><td>12.47 &mu;s</td><td>12.65 &mu;s</td><td>12.72 &mu;s</td><td>12.73 &mu;s</td><td>12.77 &mu;s</td><td>78,781.9</td><td>1.00</td><td>0.01</td><td>4.8065</td><td>29.49 KB</td><td>1.00</td>
+</tr><tr><td>ParseEdgeCases</td><td>EdgeCases</td><td>1000</td><td>254.66 &mu;s</td><td>2.292 &mu;s</td><td>1.914 &mu;s</td><td>0.531 &mu;s</td><td>251.39 &mu;s</td><td>253.30 &mu;s</td><td>255.29 &mu;s</td><td>256.02 &mu;s</td><td>257.18 &mu;s</td><td>3,926.9</td><td>1.93</td><td>0.03</td><td>133.7891</td><td>820.31 KB</td><td>2.77</td>
+</tr><tr><td>ParseFourPartNames</td><td>FourParts</td><td>1000</td><td>157.25 &mu;s</td><td>1.704 &mu;s</td><td>1.594 &mu;s</td><td>0.412 &mu;s</td><td>155.35 &mu;s</td><td>155.90 &mu;s</td><td>156.74 &mu;s</td><td>158.06 &mu;s</td><td>160.27 &mu;s</td><td>6,359.2</td><td>1.19</td><td>0.02</td><td>69.0918</td><td>424.7 KB</td><td>1.44</td>
+</tr><tr><td>ParseMixedNames</td><td>Mixed</td><td>1000</td><td>453.51 &mu;s</td><td>4.392 &mu;s</td><td>4.108 &mu;s</td><td>1.061 &mu;s</td><td>448.56 &mu;s</td><td>450.43 &mu;s</td><td>452.37 &mu;s</td><td>456.02 &mu;s</td><td>461.92 &mu;s</td><td>2,205.0</td><td>3.43</td><td>0.05</td><td>176.2695</td><td>1080.52 KB</td><td>3.66</td>
+</tr><tr><td>ParseThreePartNames</td><td>ThreeParts</td><td>1000</td><td>137.64 &mu;s</td><td>2.736 &mu;s</td><td>3.041 &mu;s</td><td>0.698 &mu;s</td><td>132.81 &mu;s</td><td>135.29 &mu;s</td><td>137.08 &mu;s</td><td>140.07 &mu;s</td><td>143.25 &mu;s</td><td>7,265.1</td><td>1.04</td><td>0.03</td><td>58.5938</td><td>360.19 KB</td><td>1.22</td>
+</tr><tr><td>ParseTwoPartNames</td><td>TwoParts</td><td>1000</td><td>132.24 &mu;s</td><td>1.919 &mu;s</td><td>1.602 &mu;s</td><td>0.444 &mu;s</td><td>129.55 &mu;s</td><td>130.88 &mu;s</td><td>132.37 &mu;s</td><td>132.95 &mu;s</td><td>134.80 &mu;s</td><td>7,562.2</td><td>1.00</td><td>0.02</td><td>48.0957</td><td>295.63 KB</td><td>1.00</td>
+</tr><tr><td>ParseEdgeCases</td><td>EdgeCases</td><td>10000</td><td>2,741.93 &mu;s</td><td>53.622 &mu;s</td><td>98.052 &mu;s</td><td>15.130 &mu;s</td><td>2,530.32 &mu;s</td><td>2,688.65 &mu;s</td><td>2,749.61 &mu;s</td><td>2,796.51 &mu;s</td><td>2,957.25 &mu;s</td><td>364.7</td><td>2.07</td><td>0.08</td><td>1335.9375</td><td>8203.13 KB</td><td>2.77</td>
+</tr><tr><td>ParseFourPartNames</td><td>FourParts</td><td>10000</td><td>1,626.44 &mu;s</td><td>5.339 &mu;s</td><td>4.458 &mu;s</td><td>1.237 &mu;s</td><td>1,617.13 &mu;s</td><td>1,624.13 &mu;s</td><td>1,626.44 &mu;s</td><td>1,628.17 &mu;s</td><td>1,636.22 &mu;s</td><td>614.8</td><td>1.23</td><td>0.02</td><td>693.3594</td><td>4248.06 KB</td><td>1.44</td>
+</tr><tr><td>ParseMixedNames</td><td>Mixed</td><td>10000</td><td>4,754.83 &mu;s</td><td>76.461 &mu;s</td><td>71.521 &mu;s</td><td>18.467 &mu;s</td><td>4,646.86 &mu;s</td><td>4,716.24 &mu;s</td><td>4,741.26 &mu;s</td><td>4,803.31 &mu;s</td><td>4,908.92 &mu;s</td><td>210.3</td><td>3.58</td><td>0.09</td><td>1757.8125</td><td>10811.42 KB</td><td>3.65</td>
+</tr><tr><td>ParseThreePartNames</td><td>ThreeParts</td><td>10000</td><td>1,410.55 &mu;s</td><td>23.553 &mu;s</td><td>26.179 &mu;s</td><td>6.006 &mu;s</td><td>1,373.58 &mu;s</td><td>1,392.17 &mu;s</td><td>1,414.82 &mu;s</td><td>1,419.27 &mu;s</td><td>1,473.91 &mu;s</td><td>708.9</td><td>1.06</td><td>0.03</td><td>587.8906</td><td>3604.13 KB</td><td>1.22</td>
+</tr><tr><td>ParseTwoPartNames</td><td>TwoParts</td><td>10000</td><td>1,326.93 &mu;s</td><td>21.193 &mu;s</td><td>27.557 &mu;s</td><td>5.625 &mu;s</td><td>1,286.40 &mu;s</td><td>1,313.38 &mu;s</td><td>1,317.00 &mu;s</td><td>1,334.43 &mu;s</td><td>1,387.55 &mu;s</td><td>753.6</td><td>1.00</td><td>0.03</td><td>482.4219</td><td>2959.23 KB</td><td>1.00</td>
+</tr></tbody></table>
+</body>
+</html>
