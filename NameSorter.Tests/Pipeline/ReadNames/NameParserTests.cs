@@ -25,9 +25,9 @@ namespace NameSorter.Tests.Pipeline.ReadNames
             // Assert
             Assert.Multiple(() =>
             {
-                Assert.That(result.GivenNames, Has.Count.EqualTo(1));
-                Assert.That(result.GivenNames[0], Is.EqualTo("John"));
-                Assert.That(result.LastName, Is.EqualTo("Smith"));
+                Assert.That(result.Value!.GivenNames, Has.Count.EqualTo(1));
+                Assert.That(result.Value!.GivenNames[0], Is.EqualTo("John"));
+                Assert.That(result.Value!.LastName, Is.EqualTo("Smith"));
             });
         }
 
@@ -43,10 +43,10 @@ namespace NameSorter.Tests.Pipeline.ReadNames
             // Assert
             Assert.Multiple(() =>
             {
-                Assert.That(result.GivenNames, Has.Count.EqualTo(2));
-                Assert.That(result.GivenNames[0], Is.EqualTo("John"));
-                Assert.That(result.GivenNames[1], Is.EqualTo("Robert"));
-                Assert.That(result.LastName, Is.EqualTo("Smith"));
+                Assert.That(result.Value!.GivenNames, Has.Count.EqualTo(2));
+                Assert.That(result.Value!.GivenNames[0], Is.EqualTo("John"));
+                Assert.That(result.Value!.GivenNames[1], Is.EqualTo("Robert"));
+                Assert.That(result.Value!.LastName, Is.EqualTo("Smith"));
             });
         }
 
@@ -62,44 +62,53 @@ namespace NameSorter.Tests.Pipeline.ReadNames
             // Assert
             Assert.Multiple(() =>
             {
-                Assert.That(result.GivenNames, Has.Count.EqualTo(3));
-                Assert.That(result.GivenNames[0], Is.EqualTo("John"));
-                Assert.That(result.GivenNames[1], Is.EqualTo("Robert"));
-                Assert.That(result.GivenNames[2], Is.EqualTo("James"));
-                Assert.That(result.LastName, Is.EqualTo("Smith"));
+                Assert.That(result.Value!.GivenNames, Has.Count.EqualTo(3));
+                Assert.That(result.Value!.GivenNames[0], Is.EqualTo("John"));
+                Assert.That(result.Value!.GivenNames[1], Is.EqualTo("Robert"));
+                Assert.That(result.Value!.GivenNames[2], Is.EqualTo("James"));
+                Assert.That(result.Value!.LastName, Is.EqualTo("Smith"));
             });
         }
         
         [TestCase("")]
         [TestCase("   ")]
-        public void ParseName_WithEmptyInput_ThrowsArgumentException(string input)
+        public void ParseName_WithEmptyInput_ReturnsFalse(string input)
         {
-            // Act & Assert
-            var ex = Assert.Throws<ArgumentException>(() => parser.ParseName(input));
-            Assert.That(ex.Message, Does.Contain("Full name cannot be empty"));
-            Assert.That(ex.ParamName, Is.EqualTo("fullName"));
+            // Act
+            var result = parser.ParseName(input);
+            
+            // Assert
+            Assert.That(result.Value, Is.Null);
+            Assert.That(result.IsSuccess, Is.False);
+            Assert.That(result.ErrorMessage, Does.Contain("Full name cannot be empty"));
         }
 
         [TestCase("John")]
         [TestCase("A")]
-        public void ParseName_WithSingleName_ThrowsArgumentException(string input)
+        public void ParseName_WithSingleName_RetursFalse(string input)
         {
-            // Act & Assert
-            var ex = Assert.Throws<ArgumentException>(() => parser.ParseName(input));
-            Assert.That(ex.Message, Does.Contain("Name must contain at least one given name and one last name"));
-            Assert.That(ex.ParamName, Is.EqualTo("fullName"));
+            // Act
+            var result = parser.ParseName(input);
+            
+            // Assert
+            Assert.That(result.Value, Is.Null);
+            Assert.That(result.IsSuccess, Is.False);
+            Assert.That(result.ErrorMessage, Does.Contain("Name must contain at least one given name and one last name"));
         }
 
         [Test]
-        public void ParseName_WithMoreThanFourParts_ThrowsArgumentException()
+        public void ParseName_WithMoreThanFourParts_ReturnsFalse()
         {
             // Arrange
             var fullName = "John Robert James William Smith";
 
-            // Act & Assert
-            var ex = Assert.Throws<ArgumentException>(() => parser.ParseName(fullName));
-            Assert.That(ex.Message, Does.Contain("Name cannot contain more than three given names and one last name"));
-            Assert.That(ex.ParamName, Is.EqualTo("fullName"));
+            // Act
+            var result = parser.ParseName(fullName);
+            
+            // Assert
+            Assert.That(result.Value, Is.Null);
+            Assert.That(result.IsSuccess, Is.False);
+            Assert.That(result.ErrorMessage, Does.Contain("Name cannot contain more than three given names and one last name"));
         }
 
         [Test]
@@ -114,10 +123,10 @@ namespace NameSorter.Tests.Pipeline.ReadNames
             // Assert
             Assert.Multiple(() =>
             {
-                Assert.That(result.GivenNames, Has.Count.EqualTo(2));
-                Assert.That(result.GivenNames[0], Is.EqualTo("John"));
-                Assert.That(result.GivenNames[1], Is.EqualTo("Robert"));
-                Assert.That(result.LastName, Is.EqualTo("Smith"));
+                Assert.That(result.Value!.GivenNames, Has.Count.EqualTo(2));
+                Assert.That(result.Value!.GivenNames[0], Is.EqualTo("John"));
+                Assert.That(result.Value!.GivenNames[1], Is.EqualTo("Robert"));
+                Assert.That(result.Value!.LastName, Is.EqualTo("Smith"));
             });
         }
 
@@ -133,9 +142,9 @@ namespace NameSorter.Tests.Pipeline.ReadNames
             // Assert
             Assert.Multiple(() =>
             {
-                Assert.That(result.GivenNames, Has.Count.EqualTo(1));
-                Assert.That(result.GivenNames[0], Is.EqualTo("John"));
-                Assert.That(result.LastName, Is.EqualTo("Smith"));
+                Assert.That(result.Value!.GivenNames, Has.Count.EqualTo(1));
+                Assert.That(result.Value!.GivenNames[0], Is.EqualTo("John"));
+                Assert.That(result.Value!.LastName, Is.EqualTo("Smith"));
             });
         }
     }

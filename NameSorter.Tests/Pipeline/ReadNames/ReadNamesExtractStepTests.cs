@@ -1,4 +1,5 @@
 using DD.NameSorter;
+using DD.NameSorter.Abstractions;
 using DD.NameSorter.Configuration;
 using DD.NameSorter.Infrastructure;
 using DD.NameSorter.Pipeline.ReadNames;
@@ -44,7 +45,7 @@ namespace NameSorter.Tests.Pipeline.ReadNames
 
             for (int i = 0; i < fileLines.Length; i++)
             {
-                nameParser.ParseName(fileLines[i]).Returns(expectedPeople[i]);
+                nameParser.ParseName(fileLines[i]).Returns(Result<Person>.Success(expectedPeople[i]));
             }
 
             // Act
@@ -115,8 +116,8 @@ namespace NameSorter.Tests.Pipeline.ReadNames
             fileSystem.Exists(filePath).Returns(true);
             fileSystem.ReadAllLines(filePath).Returns(fileLines);
 
-            nameParser.ParseName(fileLines[0]).Returns(expectedPeople[0]);
-            nameParser.ParseName(fileLines[3]).Returns(expectedPeople[1]);
+            nameParser.ParseName(fileLines[0]).Returns(Result<Person>.Success(expectedPeople[0]));
+            nameParser.ParseName(fileLines[3]).Returns(Result<Person>.Success(expectedPeople[1]));
 
             // Act
             var result = step.Process().ToList();

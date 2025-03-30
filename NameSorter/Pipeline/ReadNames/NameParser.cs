@@ -1,3 +1,5 @@
+using DD.NameSorter.Abstractions;
+
 namespace DD.NameSorter.Pipeline.ReadNames;
 
 /// <summary>
@@ -5,7 +7,7 @@ namespace DD.NameSorter.Pipeline.ReadNames;
 /// </summary>
 public interface INameParser
 {
-    Person ParseName(string fullName);
+    Result<Person> ParseName(string fullName);
 }
 
 /// <summary>
@@ -18,22 +20,22 @@ public interface INameParser
 /// </remarks>
 public class NameParser : INameParser
 {
-    public Person ParseName(string fullName)
+    public Result<Person> ParseName(string fullName)
     {
         if (string.IsNullOrWhiteSpace(fullName))
-            throw new ArgumentException("Full name cannot be empty.", nameof(fullName));
+            return Result<Person>.Failure("Full name cannot be empty.");
 
         var nameParts = fullName.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
         
         if (nameParts.Length < 2)
-            throw new ArgumentException("Name must contain at least one given name and one last name.", nameof(fullName));
+            return Result<Person>.Failure($"Name must contain at least one given name and one last name ({fullName}).");
         
         if (nameParts.Length > 4)
-            throw new ArgumentException("Name cannot contain more than three given names and one last name.", nameof(fullName));
+            return Result<Person>.Failure($"Name cannot contain more than three given names and one last name ({fullName}).");
 
         var lastName = nameParts[^1];
         var givenNames = nameParts[..^1].ToList();
 
-        return new Person(givenNames, lastName);
+        return Result<Person>.Success(new Person(givenNames, lastName));
     }
 }

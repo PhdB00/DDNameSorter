@@ -24,6 +24,20 @@ public class ReadNamesExtractStep(
         var names = fileSystem.ReadAllLines(filePath)
             .Where(line => !string.IsNullOrWhiteSpace(line));
         
-        return names.Select(nameParser.ParseName);
+        var results = names.Select(nameParser.ParseName).ToList();
+        
+        var errors = results
+            .Where(r => !r.IsSuccess)
+            .Select(r => r.ErrorMessage)
+            .Where(msg => msg != null)
+            .ToList();
+
+        if (errors.Any())
+        {
+            throw new ArgumentException(
+                $"Failed to parse some names in {filePath}{Environment.NewLine}{string.Join(Environment.NewLine, errors)}");
+        }
+
+        return results.Select(r => r.Value!);
     }
 }

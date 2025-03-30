@@ -18,7 +18,7 @@ try
 }
 catch (Exception ex)
 {
-    Console.WriteLine("We're sorry, but an error occurred: Please contact your friendly development team.");
+    Console.WriteLine("We're sorry, but an error occurred.");
     Console.WriteLine(ex.Message);
 }
 
